@@ -85,7 +85,7 @@ public class LancamentoController {
             try {
                 StatusLancamento statusSelecionado = StatusLancamento.valueOf(dto.getStatus());
                 if (statusSelecionado == null)
-                    return ResponseEntity.badRequest().body("Não é possível atualizar o status do lançamento, envie um status válido");
+                    return ResponseEntity.badRequest().body("Não é possível datualizar o status do lançamento, envie um status válido");
                 entity = service.atulizarStatus(entity,statusSelecionado);
                 return ResponseEntity.ok(entity);
             }catch (RegraNegocioException e){

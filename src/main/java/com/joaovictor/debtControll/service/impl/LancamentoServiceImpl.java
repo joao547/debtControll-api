@@ -3,6 +3,7 @@ package com.joaovictor.debtControll.service.impl;
 import com.joaovictor.debtControll.exceptions.RegraNegocioException;
 import com.joaovictor.debtControll.model.entity.Lancamento;
 import com.joaovictor.debtControll.model.enums.StatusLancamento;
+import com.joaovictor.debtControll.model.enums.TipoLancamento;
 import com.joaovictor.debtControll.model.repository.LancamentoRepository;
 import com.joaovictor.debtControll.service.LancamentoService;
 import org.springframework.data.domain.Example;
@@ -78,5 +79,18 @@ public class LancamentoServiceImpl implements LancamentoService {
     @Override
     public Optional<Lancamento> obterPorId(Long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public BigDecimal obterSaldoPorUsuario(Long id) {
+        BigDecimal receitas = repository.obterSaldoPorTipoLancamentoEUsuario(id, TipoLancamento.RECEITA);
+        BigDecimal despesas = repository.obterSaldoPorTipoLancamentoEUsuario(id, TipoLancamento.DESPESA);
+
+        if (receitas == null)
+            receitas = BigDecimal.ZERO;
+        if (despesas == null)
+            despesas = BigDecimal.ZERO;
+        return receitas.subtract(despesas);
     }
 }
