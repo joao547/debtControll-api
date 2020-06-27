@@ -1,5 +1,6 @@
 package com.joaovictor.debtControll.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,5 +28,6 @@ public class Usuario {
     private String email;
 
     @Column(name = "senha")
+    @JsonIgnore
     private String senha;
 }
