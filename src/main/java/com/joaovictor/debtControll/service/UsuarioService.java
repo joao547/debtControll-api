@@ -2,6 +2,8 @@ package com.joaovictor.debtControll.service;
 
 import com.joaovictor.debtControll.model.entity.Usuario;
 
+import java.util.Optional;
+
 public interface UsuarioService {
 
     Usuario autenticar(String email, String senha);
@@ -9,4 +11,6 @@ public interface UsuarioService {
     Usuario salvarUsuario(Usuario usuario);
 
     void validarEmail(String email);
+
+    Optional<Usuario> obterPorId(Long id);
 }

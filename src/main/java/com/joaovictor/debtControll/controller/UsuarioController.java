@@ -6,6 +6,7 @@ import com.joaovictor.debtControll.exceptions.ErroAutenticacao;
 import com.joaovictor.debtControll.exceptions.RegraNegocioException;
 import com.joaovictor.debtControll.model.entity.Usuario;
 import com.joaovictor.debtControll.service.UsuarioService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,13 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@RequiredArgsConstructor
 public class UsuarioController {
 
-    private UsuarioService service;
-
-    public UsuarioController(UsuarioService service) {
-        this.service = service;
-    }
+    private final UsuarioService service;
 
     @PostMapping
     public ResponseEntity salvar(@RequestBody UsuarioDTO dto){

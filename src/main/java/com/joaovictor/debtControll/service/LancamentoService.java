@@ -4,6 +4,7 @@ import com.joaovictor.debtControll.model.entity.Lancamento;
 import com.joaovictor.debtControll.model.enums.StatusLancamento;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LancamentoService {
 
@@ -15,7 +16,9 @@ public interface LancamentoService {
 
     List<Lancamento> buscar(Lancamento lancamentoFiltro);
 
-    void atulizarStatus(Lancamento lancamento, StatusLancamento status);
+    Lancamento atulizarStatus(Lancamento lancamento, StatusLancamento status);
 
     void validar(Lancamento lancamento);
+
+    Optional<Lancamento> obterPorId(Long id);
 }
