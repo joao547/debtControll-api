@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-class LancamentoRepositoryTest {
+public class LancamentoRepositoryTest {
 
     @Autowired
     LancamentoRepository repository;
@@ -81,7 +81,7 @@ class LancamentoRepositoryTest {
         return lancamento;
     }
 
-    private Lancamento criarLancamento(){
+    public static Lancamento criarLancamento(){
         return Lancamento.builder()
                 .ano(2020)
                 .mes(6)
